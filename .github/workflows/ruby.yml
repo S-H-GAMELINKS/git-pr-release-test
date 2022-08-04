@@ -25,5 +25,5 @@ jobs:
         GIT_PR_RELEASE_LABELS: release
         GIT_PR_RELEASE_TEMPLATE: .git-pr-release-template
       run: |
-        gem install git-pr-release
+        gem install git-pr-release -v '1.2.0'
         git-pr-release
