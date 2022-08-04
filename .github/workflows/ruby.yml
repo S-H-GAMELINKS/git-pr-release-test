@@ -1,0 +1,24 @@
+name: git-pr-release
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  create-release-pull-request:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+    - name: Run tests
+      run: |
+        gem install git-pr-release
+        git-pr-release
