@@ -4,16 +4,13 @@ on:
   push:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-
 jobs:
   create-release-pull-request:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: Set up Ruby
@@ -24,7 +21,7 @@ jobs:
       env:
         GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIT_PR_RELEASE_BRANCH_PRODUCTION: master
-        GIT_PR_RELEASE_BRANCH_STAGING: staging
+        GIT_PR_RELEASE_BRANCH_STAGING: main
         GIT_PR_RELEASE_TEMPLATE: .git-pr-release-template
       run: |
         gem install git-pr-release
